@@ -1,6 +1,6 @@
 part of customtogglebuttons;
 
-// TODO: Border (shape, style, radius), Text style, buttonbar shape (stadium)
+// TODO: Border (shape, style), Text style, buttonbar shape (stadium)
 // TODO: Add more Wrap customizations e.g. crossAxis, mainAxis etc.
 // TODO: Unselected splash button
 
@@ -38,9 +38,7 @@ class CustomToggleButtons extends StatelessWidget {
     this.runSpacing = 0,
     this.direction = Axis.horizontal,
     this.elevation = 0,
-  })  : assert(children != null),
-        assert(isSelected != null),
-        assert(children.length == isSelected.length),
+  })  : assert(children.length == isSelected.length),
         super(key: key);
 
   /// The toggle button widgets.
@@ -167,7 +165,8 @@ class CustomToggleButtons extends StatelessWidget {
 
   /// The radii of the border's corners.
   ///
-  /// HASN'T BEEN IMPLEMENTED YET
+  /// It uses RoundedRectangularBorder.
+  /// The value of borderRadius determines the radius of the border.
   ///
   /// If this property is null, then non-rounded borders are used.
   final double? borderRadius;
@@ -310,7 +309,7 @@ class CustomToggleButtons extends StatelessWidget {
             splashColor: splashColor,
             hoverColor: hoverColor,
             border: renderBorder ? _getBorder(index) : Border(),
-            //borderRadius: borderRadius,
+            borderRadius: borderRadius,
             elevation: elevation,
           );
         },
@@ -362,8 +361,7 @@ class _CustomToggleButton extends StatelessWidget {
 
   final BoxConstraints? constraints;
 
-  final double?
-  borderRadius; // TODO: Figure out way to make this work with Border
+  final double? borderRadius;
   final BoxBorder? border;
 
   final double? elevation;
@@ -371,11 +369,7 @@ class _CustomToggleButton extends StatelessWidget {
   Color? _getTextColor(context) {
     if (onPressed == null) {
       return disabledColor ??
-          Theme
-              .of(context)
-              .colorScheme
-              .onSurface
-              .withOpacity(0.38);
+          Theme.of(context).colorScheme.onSurface.withOpacity(0.38);
     }
     if (isSelected!) {
       if (selectedColor == null) {
@@ -396,10 +390,7 @@ class _CustomToggleButton extends StatelessWidget {
     if (isSelected!) {
       if (fillColor == null) {
         if (elevation! > 0) {
-          return Theme
-              .of(context)
-              .colorScheme
-              .surface;
+          return Theme.of(context).colorScheme.surface;
         }
         return Colors.transparent;
       }
@@ -407,10 +398,7 @@ class _CustomToggleButton extends StatelessWidget {
     }
     if (unselectedFillColor == null) {
       if (elevation! > 0) {
-        return Theme
-            .of(context)
-            .colorScheme
-            .surface;
+        return Theme.of(context).colorScheme.surface;
       }
       return Colors.transparent;
     }
@@ -419,9 +407,7 @@ class _CustomToggleButton extends StatelessWidget {
 
   Color? _getHighlightColor(context) {
     if (highlightColor == null) {
-      return Theme
-          .of(context)
-          .highlightColor;
+      return Theme.of(context).highlightColor;
     }
     return highlightColor;
   }
@@ -452,13 +438,17 @@ class _CustomToggleButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: border,
+        borderRadius: BorderRadius.circular(borderRadius ?? 0),
       ),
       child: RawMaterialButton(
         textStyle: TextStyle(
           color: _getTextColor(context),
         ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius ?? 0),
+        ),
         constraints:
-        constraints ?? BoxConstraints(minWidth: 48.0, minHeight: 48.0),
+            constraints ?? BoxConstraints(minWidth: 48.0, minHeight: 48.0),
         fillColor: _getFillColor(context),
         highlightColor: _getHighlightColor(context),
         splashColor: _getSplashColor(context),
