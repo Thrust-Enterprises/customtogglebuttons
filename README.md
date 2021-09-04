@@ -117,7 +117,7 @@ Shows examples with spacing for horizontal and vertical alignment, and an exampl
 | selectedBorderColor | `Color` | `selectedBorderColor: Colors.orange` | The border color to display when the toggle button is selected. Defaults to Colors.black12.| No |
 | disabledBorderColor | `Color` | `disabledBorderColor: Colors.orange` | The border color to display when the toggle button is disabled. Defaults to Colors.black12. | No |
 | borderWidth | `double` | `borderWidth: 2.5` | The width of the border surrounding each toggle button. This applies to both the greater surrounding border, as well as the borders between buttons. Defaults to a width of 1.0 | No |
-| borderRadius | `double` | `borderRadius: 2.5` | **Not implemented** The radii of the border's corners. Defaults to 0.0| No |
+| borderRadius | `double` | `borderRadius: 2.5` | The radii of the border's corners. Defaults to 2.5| No |
 | spacing | `double` | `spacing: 5.0` | The space between two consecutive toggle buttons. Defaults to 0.0. | No |
 | runSpacing | `double` | `runSpacing: 5.0` | The space between two consecutive runs of toggle buttons. Defaults to 0.0. | No |
 | direction | `Axis` | `direction: Axis.vertical` | The direction in which the toggle buttons will be created. Can be either Axis.horizontal or Axis.vertical. Defaults to Axis.horizontal. | No |

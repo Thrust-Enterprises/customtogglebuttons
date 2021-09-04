@@ -438,14 +438,14 @@ class _CustomToggleButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: border,
-        borderRadius: BorderRadius.circular(borderRadius ?? 0),
+        borderRadius: BorderRadius.circular(borderRadius ?? 2.5),
       ),
       child: RawMaterialButton(
         textStyle: TextStyle(
           color: _getTextColor(context),
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(borderRadius ?? 0),
+          borderRadius: BorderRadius.circular(borderRadius ?? 2.5),
         ),
         constraints:
             constraints ?? BoxConstraints(minWidth: 48.0, minHeight: 48.0),
